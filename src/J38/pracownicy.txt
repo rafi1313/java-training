@@ -1,0 +1,10 @@
+jan;kowal;4560
+adam;adamski;2580
+agata;malinowska;4561
+radek;kredek;1254
+marek;rafalski;7842
+edek;asd;2
+olo;polo;123
+jola;nowa;123
+aaa;ddd;12
+qwe;asd;123321
