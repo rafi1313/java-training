@@ -9,14 +9,10 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         Scanner input = new Scanner(System.in);
         Controller uc = new Controller();
-
         boolean program = true;
-
         while (program) {
             System.out.println("P-pokaż, D-dodaj, U-usuń, M-modyfikuj, S-szukaj, Q-wyjście");
-
             String dec = input.nextLine();
-
             switch (dec.toUpperCase()) {
                 case "D":
                     System.out.println("Podaj imię");
@@ -25,7 +21,6 @@ public class Main {
                     String nazwisko = input.nextLine();
                     System.out.println("Podaj nr telefonu");
                     String telefon = input.nextLine();
-
                     uc.addKontakt(imie, nazwisko, telefon);
                     break;
                 case "P":
@@ -45,13 +40,11 @@ public class Main {
                     System.out.printf("Podaj nr kontaktu do modyfikacji");
                     String idToModify = input.nextLine();
 
-                    System.out.println("Podaj nowe imię");
-                    String noweImie = input.nextLine();
-                    System.out.println("Podaj nazwisko");
-                    String noweNazwisko = input.nextLine();
-                    System.out.println("Podaj nr telefonu");
-                    String nowyTelefon = input.nextLine();
-                    uc.modifyContact(idToModify,noweImie,noweNazwisko,nowyTelefon);
+                    System.out.println("Co chcesz zmienić? [imie/nazwisko/telefon]");
+                    String doZmiany = input.nextLine();
+                    System.out.println("Podaj nową wartość");
+                    String nowaWartosc = input.nextLine();
+                    uc.modifyContact(idToModify, doZmiany, nowaWartosc);
                     break;
                 case "S":
                     System.out.println("Podaj frazę do znalezienia");
@@ -61,12 +54,7 @@ public class Main {
                 case "Q":
                     program = false;
                     break;
-
             }
-
-
         }
-
-
     }
 }

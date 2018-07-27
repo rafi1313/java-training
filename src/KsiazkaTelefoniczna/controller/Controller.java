@@ -66,14 +66,13 @@ public class Controller {
         }
     }
 
-    public void modifyContact(String _idToModify, String _noweImie, String _noweNazwisko, String _nowyTelefon) throws SQLException {
+    public void modifyContact(String _idToModify, String _doZmiany, String _nowaWartosc) throws SQLException {
 
-        String sqlStatement = "update kontakty set imie =?, nazwisko =?,telefon=? where id=?";
+        String sqlStatement = "update kontakty set "+_doZmiany+"=? where id=?";
         PreparedStatement st = dao.getCon().prepareStatement(sqlStatement);
-        st.setString(1, _noweImie);
-        st.setString(2, _noweNazwisko);
-        st.setString(3, _nowyTelefon);
-        st.setString(4, _idToModify);
+
+        st.setString(1, _nowaWartosc);
+        st.setString(2, _idToModify);
         st.execute();
         st.close();
         System.out.println("Czy chcesz zatwierdzić wprowadzone zmiany ? [T/N]");
@@ -87,13 +86,6 @@ public class Controller {
     }
 
     public void findContact(String _phrase) throws SQLException {
-//        String sqlStatement = "select * from kontakty where imie like %?% or nazwisko like %?% or telefon like %?%";
-//        PreparedStatement st = dao.getCon().prepareStatement(sqlStatement);
-//        st.setString(1,_phrase);
-//        st.setString(2,_phrase);
-//        st.setString(3,_phrase);
-//        st.execute();
-//        st.close();
         Statement st = dao.getCon().createStatement();
         ResultSet rs = st.executeQuery("select * from kontakty where imie like '%" + _phrase + "%' or nazwisko like '%" + _phrase + "%' or telefon like '%" + _phrase + "%'");
         int rows = 0;
@@ -108,6 +100,5 @@ public class Controller {
             }
         }
         st.close();
-
     }
 }
